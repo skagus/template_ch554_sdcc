@@ -1,0 +1,13 @@
+.vscode
+*.bin
+*.hex
+*.ihx
+*.lk
+*.map
+*.mem
+*.bak
+*.asm
+*.lst
+*.rel
+*.rst
+*.sym

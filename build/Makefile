@@ -23,11 +23,11 @@ endif
 CSRC = \
 		app/main.c \
 		app/cdc_x2.c \
-		include/debug.c
+		util/debug.c
 
 CSRC_org = \
 		app/original.c \
-		include/debug.c
+		util/debug.c
 
 
 		# $(VER_FILE)
@@ -65,7 +65,7 @@ LIB_OPT =	$(patsubst %,-L$(PRJ_TOP)/%,$(PRJ_LIB_DIR)) \
 
 ################  Include.
 # Add relative path from $(PRJ_TOP)
-PRJ_INC =	include \
+PRJ_INC =	util \
 			app
 
 # Add absolue path. (ex. c:/lib/inc)
@@ -171,7 +171,7 @@ DIR_CHK = @mkdir -p $(@D)
 $(OBJDIR)/%.c.rel : $(PRJ_TOP)/%.c
 	$(INFO)
 	$(DIR_CHK)
-	$(C_MAKE) -c -V $(CFLAGS)$< -o $@ 
+	@$(C_MAKE) -c -V $(CFLAGS)$< -o $@ 
 
 ################### File Creation #################
 all: $(TARGET).bin $(TARGET).hex

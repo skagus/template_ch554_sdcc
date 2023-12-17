@@ -157,7 +157,7 @@ Header file for CH554 microcontrollers.
 #endif
 
 #ifndef USB_DEVICE_ADDR
-#define	USB_DEVICE_ADDR			0x02	/* 默认的USB设备地址 */
+#define	USB_DEVICE_ADDR			0x02	/* default USB address */
 #endif
 #ifndef DEFAULT_ENDP0_SIZE
 #define DEFAULT_ENDP0_SIZE      8       /* default maximum packet size for endpoint 0 */
@@ -169,169 +169,169 @@ Header file for CH554 microcontrollers.
 #define MAX_PACKET_SIZE         64      /* maximum packet size */
 #endif
 #ifndef USB_BO_CBW_SIZE
-#define USB_BO_CBW_SIZE			0x1F	/* 命令块CBW的总长度 */
-#define USB_BO_CSW_SIZE			0x0D	/* 命令状态块CSW的总长度 */
+#define USB_BO_CBW_SIZE			0x1F	/* total length of CBW */
+#define USB_BO_CSW_SIZE			0x0D	/* total length of CSW */
 #endif
 #ifndef USB_BO_CBW_SIG0
-#define USB_BO_CBW_SIG0         0x55    /* 命令块CBW识别标志'USBC' */
+#define USB_BO_CBW_SIG0         0x55    /* CBW identifier 'USBC' */
 #define USB_BO_CBW_SIG1         0x53
 #define USB_BO_CBW_SIG2         0x42
 #define USB_BO_CBW_SIG3         0x43
-#define USB_BO_CSW_SIG0         0x55    /* 命令状态块CSW识别标志'USBS' */
+#define USB_BO_CSW_SIG0         0x55     /* CSW identifier USBS' */
 #define USB_BO_CSW_SIG1         0x53
 #define USB_BO_CSW_SIG2         0x42
 #define USB_BO_CSW_SIG3         0x53
 #endif
 
 typedef struct _USB_SETUP_REQ {
-    uint8_t bRequestType;
-    uint8_t bRequest;
-    uint8_t wValueL;
-    uint8_t wValueH;
-    uint8_t wIndexL;
-    uint8_t wIndexH;
-    uint8_t wLengthL;
-    uint8_t wLengthH;
-} USB_SETUP_REQ, *PUSB_SETUP_REQ;
+	uint8_t bRequestType;
+	uint8_t bRequest;
+	uint8_t wValueL;
+	uint8_t wValueH;
+	uint8_t wIndexL;
+	uint8_t wIndexH;
+	uint8_t wLengthL;
+	uint8_t wLengthH;
+} USB_SETUP_REQ, * PUSB_SETUP_REQ;
 
-typedef USB_SETUP_REQ __xdata *PXUSB_SETUP_REQ;
+typedef USB_SETUP_REQ __xdata* PXUSB_SETUP_REQ;
 
 typedef struct _USB_DEVICE_DESCR {
-    uint8_t bLength;
-    uint8_t bDescriptorType;
-    uint8_t bcdUSBL;
-    uint8_t bcdUSBH;
-    uint8_t bDeviceClass;
-    uint8_t bDeviceSubClass;
-    uint8_t bDeviceProtocol;
-    uint8_t bMaxPacketSize0;
-    uint8_t idVendorL;
-    uint8_t idVendorH;
-    uint8_t idProductL;
-    uint8_t idProductH;
-    uint8_t bcdDeviceL;
-    uint8_t bcdDeviceH;
-    uint8_t iManufacturer;
-    uint8_t iProduct;
-    uint8_t iSerialNumber;
-    uint8_t bNumConfigurations;
-} USB_DEV_DESCR, *PUSB_DEV_DESCR;
+	uint8_t bLength;
+	uint8_t bDescriptorType;
+	uint8_t bcdUSBL;
+	uint8_t bcdUSBH;
+	uint8_t bDeviceClass;
+	uint8_t bDeviceSubClass;
+	uint8_t bDeviceProtocol;
+	uint8_t bMaxPacketSize0;
+	uint8_t idVendorL;
+	uint8_t idVendorH;
+	uint8_t idProductL;
+	uint8_t idProductH;
+	uint8_t bcdDeviceL;
+	uint8_t bcdDeviceH;
+	uint8_t iManufacturer;
+	uint8_t iProduct;
+	uint8_t iSerialNumber;
+	uint8_t bNumConfigurations;
+} USB_DEV_DESCR, * PUSB_DEV_DESCR;
 
-typedef USB_DEV_DESCR __xdata *PXUSB_DEV_DESCR;
+typedef USB_DEV_DESCR __xdata* PXUSB_DEV_DESCR;
 
 typedef struct _USB_CONFIG_DESCR {
-    uint8_t bLength;
-    uint8_t bDescriptorType;
-    uint8_t wTotalLengthL;
-    uint8_t wTotalLengthH;
-    uint8_t bNumInterfaces;
-    uint8_t bConfigurationValue;
-    uint8_t iConfiguration;
-    uint8_t bmAttributes;
-    uint8_t MaxPower;
-} USB_CFG_DESCR, *PUSB_CFG_DESCR;
+	uint8_t bLength;
+	uint8_t bDescriptorType;
+	uint8_t wTotalLengthL;
+	uint8_t wTotalLengthH;
+	uint8_t bNumInterfaces;
+	uint8_t bConfigurationValue;
+	uint8_t iConfiguration;
+	uint8_t bmAttributes;
+	uint8_t MaxPower;
+} USB_CFG_DESCR, * PUSB_CFG_DESCR;
 
-typedef USB_CFG_DESCR __xdata *PXUSB_CFG_DESCR;
+typedef USB_CFG_DESCR __xdata* PXUSB_CFG_DESCR;
 
 typedef struct _USB_INTERF_DESCR {
-    uint8_t bLength;
-    uint8_t bDescriptorType;
-    uint8_t bInterfaceNumber;
-    uint8_t bAlternateSetting;
-    uint8_t bNumEndpoints;
-    uint8_t bInterfaceClass;
-    uint8_t bInterfaceSubClass;
-    uint8_t bInterfaceProtocol;
-    uint8_t iInterface;
-} USB_ITF_DESCR, *PUSB_ITF_DESCR;
+	uint8_t bLength;
+	uint8_t bDescriptorType;
+	uint8_t bInterfaceNumber;
+	uint8_t bAlternateSetting;
+	uint8_t bNumEndpoints;
+	uint8_t bInterfaceClass;
+	uint8_t bInterfaceSubClass;
+	uint8_t bInterfaceProtocol;
+	uint8_t iInterface;
+} USB_ITF_DESCR, * PUSB_ITF_DESCR;
 
-typedef USB_ITF_DESCR __xdata *PXUSB_ITF_DESCR;
+typedef USB_ITF_DESCR __xdata* PXUSB_ITF_DESCR;
 
 typedef struct _USB_ENDPOINT_DESCR {
-    uint8_t bLength;
-    uint8_t bDescriptorType;
-    uint8_t bEndpointAddress;
-    uint8_t bmAttributes;
-    uint8_t wMaxPacketSizeL;
-    uint8_t wMaxPacketSizeH;
-    uint8_t bInterval;
-} USB_ENDP_DESCR, *PUSB_ENDP_DESCR;
+	uint8_t bLength;
+	uint8_t bDescriptorType;
+	uint8_t bEndpointAddress;
+	uint8_t bmAttributes;
+	uint8_t wMaxPacketSizeL;
+	uint8_t wMaxPacketSizeH;
+	uint8_t bInterval;
+} USB_ENDP_DESCR, * PUSB_ENDP_DESCR;
 
-typedef USB_ENDP_DESCR __xdata *PXUSB_ENDP_DESCR;
+typedef USB_ENDP_DESCR __xdata* PXUSB_ENDP_DESCR;
 
 typedef struct _USB_CONFIG_DESCR_LONG {
-    USB_CFG_DESCR   cfg_descr;
-    USB_ITF_DESCR   itf_descr;
-    USB_ENDP_DESCR  endp_descr[1];
-} USB_CFG_DESCR_LONG, *PUSB_CFG_DESCR_LONG;
+	USB_CFG_DESCR   cfg_descr;
+	USB_ITF_DESCR   itf_descr;
+	USB_ENDP_DESCR  endp_descr[1];
+} USB_CFG_DESCR_LONG, * PUSB_CFG_DESCR_LONG;
 
-typedef USB_CFG_DESCR_LONG __xdata *PXUSB_CFG_DESCR_LONG;
+typedef USB_CFG_DESCR_LONG __xdata* PXUSB_CFG_DESCR_LONG;
 
 typedef struct _USB_HUB_DESCR {
-    uint8_t bDescLength;
-    uint8_t bDescriptorType;
-    uint8_t bNbrPorts;
-    uint8_t wHubCharacteristicsL;
-    uint8_t wHubCharacteristicsH;
-    uint8_t bPwrOn2PwrGood;
-    uint8_t bHubContrCurrent;
-    uint8_t DeviceRemovable;
-    uint8_t PortPwrCtrlMask;
-} USB_HUB_DESCR, *PUSB_HUB_DESCR;
+	uint8_t bDescLength;
+	uint8_t bDescriptorType;
+	uint8_t bNbrPorts;
+	uint8_t wHubCharacteristicsL;
+	uint8_t wHubCharacteristicsH;
+	uint8_t bPwrOn2PwrGood;
+	uint8_t bHubContrCurrent;
+	uint8_t DeviceRemovable;
+	uint8_t PortPwrCtrlMask;
+} USB_HUB_DESCR, * PUSB_HUB_DESCR;
 
-typedef USB_HUB_DESCR __xdata *PXUSB_HUB_DESCR;
+typedef USB_HUB_DESCR __xdata* PXUSB_HUB_DESCR;
 
 typedef struct _USB_HID_DESCR {
-    uint8_t bLength;
-    uint8_t bDescriptorType;
-    uint8_t bcdHIDL;
-    uint8_t bcdHIDH;
-    uint8_t bCountryCode;
-    uint8_t bNumDescriptors;
-    uint8_t bDescriptorTypeX;
-    uint8_t wDescriptorLengthL;
-    uint8_t wDescriptorLengthH;
-} USB_HID_DESCR, *PUSB_HID_DESCR;
+	uint8_t bLength;
+	uint8_t bDescriptorType;
+	uint8_t bcdHIDL;
+	uint8_t bcdHIDH;
+	uint8_t bCountryCode;
+	uint8_t bNumDescriptors;
+	uint8_t bDescriptorTypeX;
+	uint8_t wDescriptorLengthL;
+	uint8_t wDescriptorLengthH;
+} USB_HID_DESCR, * PUSB_HID_DESCR;
 
-typedef USB_HID_DESCR __xdata *PXUSB_HID_DESCR;
+typedef USB_HID_DESCR __xdata* PXUSB_HID_DESCR;
 
 typedef struct _UDISK_BOC_CBW {         /* command of BulkOnly USB-FlashDisk */
-    uint8_t mCBW_Sig0;
-    uint8_t mCBW_Sig1;
-    uint8_t mCBW_Sig2;
-    uint8_t mCBW_Sig3;
-    uint8_t mCBW_Tag0;
-    uint8_t mCBW_Tag1;
-    uint8_t mCBW_Tag2;
-    uint8_t mCBW_Tag3;
-    uint8_t mCBW_DataLen0;
-    uint8_t mCBW_DataLen1;
-    uint8_t mCBW_DataLen2;
-    uint8_t mCBW_DataLen3;                /* uppest byte of data length, always is 0 */
-    uint8_t mCBW_Flag;                    /* transfer direction and etc. */
-    uint8_t mCBW_LUN;
-    uint8_t mCBW_CB_Len;                  /* length of command block */
-    uint8_t mCBW_CB_Buf[16];              /* command block buffer */
-} UDISK_BOC_CBW, *PUDISK_BOC_CBW;
+	uint8_t mCBW_Sig0;
+	uint8_t mCBW_Sig1;
+	uint8_t mCBW_Sig2;
+	uint8_t mCBW_Sig3;
+	uint8_t mCBW_Tag0;
+	uint8_t mCBW_Tag1;
+	uint8_t mCBW_Tag2;
+	uint8_t mCBW_Tag3;
+	uint8_t mCBW_DataLen0;
+	uint8_t mCBW_DataLen1;
+	uint8_t mCBW_DataLen2;
+	uint8_t mCBW_DataLen3;                /* uppest byte of data length, always is 0 */
+	uint8_t mCBW_Flag;                    /* transfer direction and etc. */
+	uint8_t mCBW_LUN;
+	uint8_t mCBW_CB_Len;                  /* length of command block */
+	uint8_t mCBW_CB_Buf[16];              /* command block buffer */
+} UDISK_BOC_CBW, * PUDISK_BOC_CBW;
 
-typedef UDISK_BOC_CBW __xdata *PXUDISK_BOC_CBW;
+typedef UDISK_BOC_CBW __xdata* PXUDISK_BOC_CBW;
 
 typedef struct _UDISK_BOC_CSW {         /* status of BulkOnly USB-FlashDisk */
-    uint8_t mCSW_Sig0;
-    uint8_t mCSW_Sig1;
-    uint8_t mCSW_Sig2;
-    uint8_t mCSW_Sig3;
-    uint8_t mCSW_Tag0;
-    uint8_t mCSW_Tag1;
-    uint8_t mCSW_Tag2;
-    uint8_t mCSW_Tag3;
-    uint8_t mCSW_Residue0;                /* return: remainder bytes */
-    uint8_t mCSW_Residue1;
-    uint8_t mCSW_Residue2;
-    uint8_t mCSW_Residue3;                /* uppest byte of remainder length, always is 0 */
-    uint8_t mCSW_Status;                  /* return: result status */
-} UDISK_BOC_CSW, *PUDISK_BOC_CSW;
+	uint8_t mCSW_Sig0;
+	uint8_t mCSW_Sig1;
+	uint8_t mCSW_Sig2;
+	uint8_t mCSW_Sig3;
+	uint8_t mCSW_Tag0;
+	uint8_t mCSW_Tag1;
+	uint8_t mCSW_Tag2;
+	uint8_t mCSW_Tag3;
+	uint8_t mCSW_Residue0;                /* return: remainder bytes */
+	uint8_t mCSW_Residue1;
+	uint8_t mCSW_Residue2;
+	uint8_t mCSW_Residue3;                /* uppest byte of remainder length, always is 0 */
+	uint8_t mCSW_Status;                  /* return: result status */
+} UDISK_BOC_CSW, * PUDISK_BOC_CSW;
 
-typedef UDISK_BOC_CSW __xdata *PXUDISK_BOC_CSW;
+typedef UDISK_BOC_CSW __xdata* PXUDISK_BOC_CSW;
 
 #endif  // __USB_DEF__
