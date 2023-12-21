@@ -1,53 +1,67 @@
-/********************************** (C) COPYRIGHT *******************************
-* File Name          : CDCx2.C
-* Author             : qianfan Zhao
-* Version            : V1.0
-* Date               : 2021/05/27
-* Description        : CH552 virtual two channel CDC serial port
-*******************************************************************************/
-#include <ch554.h>
-#include <debug.h>
-//#include "cdc_x2.h"
+// Blink an LED connected to pin 1.7
 
-void usb_isr_call();
-void uart0_isr_call();
-void uart1_isr_call();
-void CDC_Run();
-void CDC_Init();
+#include <stdint.h>
+#include <string.h>>
 
+#include "ch554.h"
+#include "debug.h"
+#include "bootloader.h"
 
+#include "time.h"
 
-void usb_isr(void) __interrupt (INT_NO_USB)                       //USB interrupt service routine, using register set 1
+#define ENABLE_IAP_PIN 6
+SBIT(EnableIAP, 0xB0, ENABLE_IAP_PIN);
+#define LED_PIN 0
+SBIT(LED, 0xB0, LED_PIN);
+
+void Timer2_Interrupt(void) __interrupt(INT_NO_TMR2)
 {
-	usb_isr_call();
+	time_MsTickInterrupt();
 }
 
-void uart0_isr(void) __interrupt (INT_NO_UART0)
+void IAP_Init()
 {
-	uart0_isr_call();
-}
+	USB_CTRL = 0x00;
+	USB_CTRL = bUC_RESET_SIE | bUC_CLR_ALL;
+	USB_CTRL &= ~bUC_RESET_SIE;
+	UDEV_CTRL &= ~bUD_PD_DIS;
+	P3_MOD_OC = P3_MOD_OC & ~(1 << ENABLE_IAP_PIN);
+	P3_DIR_PU = P3_DIR_PU & ~(1 << ENABLE_IAP_PIN);
 
-void uart1_isr(void) __interrupt (INT_NO_UART1)
-{
-	uart1_isr_call();
+	mDelaymS(10);
 }
 
 void main()
 {
-	CfgFsys( );
-	mDelaymS(5);
-	mInitSTDIO();
-	UART1Setup();
-	/* TI(Transmit Interrupt Flag) is seted in mInitSTDIO */
-	TI = 0;
+	CfgFsys();
 
-	CDC_Init();
+	mDelaymS(10);
 
-	E_DIS = 0;
-	EA = 1;		//Allow microcontroller interrupt
+	IAP_Init();
 
-	while(1)
+	time_MsTick_init();
+
+	EA = 1;
+
+	uint8_t time_div, time_tick, task_tick;
+	time_div = 1;
+	time_tick = 0;
+	task_tick = 5;
+	while (1)
 	{
-		CDC_Run();
+		time_tick++;
+		if (time_tick > 100)
+		{
+			time_tick = 0;
+			time_div++;
+			if (time_div == task_tick)
+			{
+				time_div = 1;
+				LED = !LED;
+			}
+		}
+
+		time_MsTick_Delay(0); // 1ms
 	}
 }
+

@@ -22,15 +22,8 @@ endif
 # Source file들은 project TOP 에서의 위치를 나타낸다.
 CSRC = \
 		app/main.c \
-		app/cdc_x2.c \
+		app/time.c \
 		util/debug.c
-
-CSRC_org = \
-		app/original.c \
-		util/debug.c
-
-
-		# $(VER_FILE)
 
 CPPSRC =
 
