@@ -21,9 +21,10 @@ endif
 ################ source files ##############
 # Source file들은 project TOP 에서의 위치를 나타낸다.
 CSRC = \
+		util/debug.c \
 		app/main.c \
-		app/time.c \
-		util/debug.c
+		app/tick.c \
+		app/blink.c
 
 CPPSRC =
 

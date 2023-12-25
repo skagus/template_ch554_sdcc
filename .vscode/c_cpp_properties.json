@@ -1,0 +1,16 @@
+{
+	"configurations": [
+		{
+			"includePath": [
+				"${workspaceFolder}/**"
+			],
+			"defines": [
+				"FREQ_SYS=24000000",
+			],
+			"cStandard": "c17",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "windows-msvc-x64"
+		}
+	],
+	"version": 4
+}
