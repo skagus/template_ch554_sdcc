@@ -21,10 +21,13 @@ endif
 ################ source files ##############
 # Source file들은 project TOP 에서의 위치를 나타낸다.
 CSRC = \
+		peri/neo.c \
+		peri/delay.c \
+		peri/tick.c \
 		util/debug.c \
 		app/main.c \
-		app/tick.c \
-		app/blink.c
+		app/blink.c \
+		app/led.c
 
 CPPSRC =
 
@@ -59,8 +62,11 @@ LIB_OPT =	$(patsubst %,-L$(PRJ_TOP)/%,$(PRJ_LIB_DIR)) \
 
 ################  Include.
 # Add relative path from $(PRJ_TOP)
-PRJ_INC =	util \
-			app
+PRJ_INC = .\
+		com \
+		peri \
+		util \
+		app
 
 # Add absolue path. (ex. c:/lib/inc)
 EXT_INC =

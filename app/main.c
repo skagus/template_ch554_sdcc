@@ -22,18 +22,21 @@ void Timer2_Interrupt(void) __interrupt(INT_NO_TMR2)
 	TICK_ISR();
 }
 
-
-extern void task_LedBlink();
+extern void LED_Init();
+extern void LED_Run();
+extern void Blink_Run();
 
 void main()
 {
 	CfgFsys();
 	TICK_Init();
 
+	LED_Init();
 	EA = 1;
 
 	while (1)
 	{
-		task_LedBlink();
+		Blink_Run();
+		LED_Run();
 	}
 }
