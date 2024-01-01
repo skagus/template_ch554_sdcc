@@ -27,7 +27,8 @@ CSRC = \
 		util/debug.c \
 		app/main.c \
 		app/blink.c \
-		app/led.c
+		app/color_led.c \
+		app/key.c
 
 CPPSRC =
 

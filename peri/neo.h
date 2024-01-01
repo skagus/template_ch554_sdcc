@@ -17,16 +17,6 @@
 #pragma once
 #include <stdint.h>
 #include "gpio.h"
-#include "delay.h"
 
-#define NEO_COUNT		(3)
-#define PIN_NEO			P34
-#define NEO_GRB
-
-#define NEO_latch()		DLY_us(281)                                   // latch colors
 void NEO_Init();
-void NEO_ClearOne(uint8_t pixel);                                     // clear one pixel in buffer
-void NEO_ClearAll(void);                                              // clear all pixels
-void NEO_WriteColor(uint8_t pixel, uint8_t r, uint8_t g, uint8_t b);  // write color to pixel in buffer
-void NEO_Update(void);                                                // write buffer to pixels
-
+void NEO_Update(uint8_t* aBuffer, uint8_t nCntLed);
